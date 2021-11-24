@@ -13,6 +13,15 @@ public class Clock {
 		//Minute is last two numbers in string parsed into integers
 		float min = Integer.parseInt(time.substring(2,4));
 		
+		// Used to validate the values coming in
+		if(hour > 23 || min > 59 ){
+			System.out.println("Please enter a valid Time");
+			
+
+			
+			return -1;
+		}
+
 		//Find percentage of the hour 
 		float hourPer = min/60;
 		
@@ -26,7 +35,7 @@ public class Clock {
 			angle = 6*min - (30*hour+30*hourPer);
 		}
 		// Found an error in first version where the angles where wrong as i just told the hour hand to stay in the one position instead of moving say if it was half past
-		// This 
+		// This else ensures that we add on the minutes that have passed to the hour hand to get the correct angle
 		else {
 			angle = 30*hour+30*hourPer - 6*min;
 		}
